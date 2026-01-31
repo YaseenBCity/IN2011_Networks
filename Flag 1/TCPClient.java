@@ -1,5 +1,5 @@
 import java.io.BufferedReader;
-i[Omport java.io.IOException;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -29,11 +29,7 @@ public class TCPClient {
         String response = reader.readLine();
         System.out.println("The server said : " + response);
 
-	String response2 = reader.readLine();
-	System.out.println(response2);
-	
         // Close down the connection
         clientSocket.close();
-	
     }
 }
