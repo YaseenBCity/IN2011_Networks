@@ -1,0 +1,15 @@
+^C
+in2011@lab000001:~$ nc -l 9940
+^C
+in2011@lab000001:~$ nc -l 9305
+Challenge 3 TCP connection established!
+Challenge is 70% complete
+Each successful TCP connection increases the percentage complete
+However it decreases with time, so be quick!
+in2011@lab000001:~$ nc -l 9138
+Challenge 3 TCP connection established!
+Challenge completed!
+IN2011:2526:CW2-3-0ad823e3-19c9f8e7e28-a7811d08fb59c68dfa9628e48c6fd00c033834af720ded0aa0607d2921e1b824-DONE
+in2011@lab000001:~$ ^C
+in2011@lab000001:~$ IN2011:2526:CW2-3-0ad823e3-19c9f8e7e28-a7811d08fb59c68dfa9628e48c6fd00c033834af720ded0aa0607d2921e1b824-DONE
+N2011:2526:CW2-3-0ad823e3-19c9f8e7e28-a7811d08fb59c68dfa9628e48c6fd00c033834af720ded0aa0607d2921e1b824-
