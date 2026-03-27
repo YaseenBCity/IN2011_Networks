@@ -141,9 +141,9 @@ public class Node implements NodeInterface {
 
     // "1 Hello World " -> "Hello World"
     public static String decodeCRNString(String encoded) {
-        //Find the first space - everything before it is the count
+        if (encoded == null || encoded.length() < 2) return "";
         int firstSpace = encoded.indexOf(' ');
-        //The actual string starts after that space and ends before the trailing space
+        if (firstSpace < 0 || firstSpace + 1 >= encoded.length()) return "";
         return encoded.substring(firstSpace + 1, encoded.length() - 1);
     }
 
@@ -176,7 +176,6 @@ public class Node implements NodeInterface {
         if (message.charAt(2) != ' ') return; // Malformed
         
         String body = message.substring(3); // Everything after "XX "
-        char type = body.charAt(0);
         
         // If this is a response (H, O, F, S, X, D), store it for the waiting sender
         char type = body.charAt(0);
@@ -269,9 +268,9 @@ public class Node implements NodeInterface {
             .limit(3)
             .collect(Collectors.toList());
         
-        StringBuilder response = new StringBuilder(txID + " O");
+        StringBuilder response = new StringBuilder(txID + " O ");
         for (Map.Entry<String, String> entry : sorted) {
-            response.append(" ").append(encodeCRNString(entry.getKey()))
+            response.append(encodeCRNString(entry.getKey()))
                     .append(encodeCRNString(entry.getValue()));
         }
         sendMessage(response.toString(), addr, port);
@@ -307,11 +306,9 @@ public class Node implements NodeInterface {
     }
 
     private void handleWrite(String txID, String body, InetAddress addr, int port) throws Exception {
-        // Parse key and value out of body
-        // body starts with "W " then encoded key then encoded value
         String rest = body.substring(2);
         String key = decodeCRNString(rest);
-        int keyFieldLen = countSpaces(key) + 1 + key.length() + 1; // "N key "
+        int keyFieldLen = encodeCRNString(key).length();
         String value = decodeCRNString(rest.substring(keyFieldLen));
         
         boolean hasKey = dataStore.containsKey(key);
