@@ -101,8 +101,7 @@ System.out.println("[INFO] write(" + markerKey + ") returned: " + writeSuccess);
 String markerReadBack = node.read(markerKey);
 if (markerReadBack == null) {
 System.out.println("[WARN] Marker value could not be read back.");
-System.out.println(" This suggests that write/read behaviour still needs
-investigation.");
+System.out.println( "This suggests that write/read behaviour still needs investigation. ");
 } else {
 System.out.println("[OK] Read-back succeeded: " + markerReadBack);
 }
@@ -116,8 +115,7 @@ advertiseSuccess);
 System.out.println();
 // Stay alive for inbound traffic and Wireshark capture
 System.out.println("[STEP 5] Handling incoming messages...");
-System.out.println(" Leave this running while you inspect traffic / collect Wireshark
-evidence.");
+System.out.println(" Leave this running while you inspect traffic / collect Wireshark evidence.");
 System.out.println(" Press Ctrl+C when you want to stop.");
 node.handleIncomingMessages(0);
 } catch (IllegalArgumentException e) {
@@ -142,8 +140,7 @@ throw new IllegalArgumentException("First argument must be your email address.")
 }
 if (!looksLikeAzureIp(ipAddress)) {
 throw new IllegalArgumentException(
-"Second argument must be the Azure lab machine IP address (expected something
-like 10.x.x.x)."
+"Second argument must be the Azure lab machine IP address (expected something like 10.x.x.x)."
 );
 }
 if (args.length == 3) {
